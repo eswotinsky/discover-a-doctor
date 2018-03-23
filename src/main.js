@@ -8,8 +8,14 @@ $(function(){
 
   function displayData(results) {
     $('#results-list').empty();
-    for(var i = 0; i < results.meta.count; i++){
-      $('#results-list').append(`<li>${results.data[i].profile.first_name} ${results.data[i].profile.last_name}</li>`);
+    if(results.meta.count == 0){
+      $('#results-error').text("No doctors found for your search query. Please try another term.")
+    }
+    else {
+      $('#results-error').text("");
+      for(var i = 0; i < results.meta.count; i++){
+        $('#results-list').append(`<li>${results.data[i].profile.first_name} ${results.data[i].profile.last_name}</li>`);
+      }
     }
   }
 

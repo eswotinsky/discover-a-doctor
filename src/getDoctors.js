@@ -6,6 +6,6 @@ export function getDoctors(medicalIssue, displayData) { //displayData will be a 
       displayData(results);
     })
     .fail(function(error){
-       $('#results-error').text(`Error ${error.meta.http_status_code}. Please try again in a moment. If the problem continues, <a href="https://github.com/eswotinsky/discover-a-doctor">contact this application\'s developer</a> for assistance.`);
+       $('#results-error').html(`Error ${error.responseText}. Please check that your API key is valid, and try again in a moment. If the problem continues, <a href="https://github.com/eswotinsky/discover-a-doctor">contact this application\'s developer</a> for assistance.`);
      });
 }
