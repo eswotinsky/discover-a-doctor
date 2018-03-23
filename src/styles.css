@@ -1,0 +1,11 @@
+small {
+  font-style: italic;
+}
+
+#app-title {
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.card {
+  background-color: lightgoldenrodyellow;
+}
