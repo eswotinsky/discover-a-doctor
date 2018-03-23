@@ -16,7 +16,13 @@ $(function(){
       $('#results-error').text("");
       for(var i = 0; i < results.meta.count; i++){
         let doctorName = `${results.data[i].profile.first_name} ${results.data[i].profile.last_name}`;
-        let doctorAddress = `${results.data[i].practices[0].visit_address.street}, ${results.data[i].practices[0].visit_address.street2}, ${results.data[i].practices[0].visit_address.city}`;
+        let doctorAddress;
+        if (results.data[i].practices[0].visit_address.street2 != undefined){
+          doctorAddress = `${results.data[i].practices[0].visit_address.street}, ${results.data[i].practices[0].visit_address.street2}, ${results.data[i].practices[0].visit_address.city}`;
+        }
+        else {
+          doctorAddress = `${results.data[i].practices[0].visit_address.street}, ${results.data[i].practices[0].visit_address.city}`;
+        }
         let doctorPhoneNumber = results.data[i].practices[0].phones[0].number;
         let doctorWebsite = results.data[i].practices[0].website;
         if(doctorWebsite){
