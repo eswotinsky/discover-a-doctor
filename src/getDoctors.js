@@ -1,6 +1,6 @@
 import $ from 'jquery';
 export function getDoctors(medicalIssue, displayData) { //displayData will be a method in main.js to output results to screen
-    const location = "47.607424,-122.335993,100"; //1201 Third Avenue, Seattle, WA 98101, USA
+    const location = "47.607424,-122.335993,75"; //1201 Third Avenue, Seattle, WA 98101, USA - display docs within 75 mile radius
     $.get(`https://api.betterdoctor.com/2016-03-01/doctors?query=${medicalIssue}&location=${location}&skip=0&limit=20&user_key=${process.env.exports.apiKey}`)
     .then(function(results) {
       displayData(results);
