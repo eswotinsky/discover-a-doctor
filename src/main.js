@@ -15,7 +15,13 @@ $(function(){
     else {
       $('#results-error').text("");
       for(var i = 0; i < results.meta.count; i++){
-        $('#results-list').append(`<li>${results.data[i].profile.first_name} ${results.data[i].profile.last_name}</li>`);
+        let doctorName = `${results.data[i].profile.first_name} ${results.data[i].profile.last_name}`;
+        let doctorAddress = `${results.data[i].practices[0].visit_address.street}, ${results.data[i].practices[0].visit_address.street2}, ${results.data[i].practices[0].visit_address.city}`;
+        let doctorPhoneNumber = results.data[i].practices[0].phones[0].number;
+        let doctorWebsite = results.data[i].practices[0].website;
+        let doctorAcceptsNewPatients = results.data[i].practices[0].accepts_new_patients;
+
+        $('#results-list').append(`<li>${doctorName}<ul><li>${doctorAddress}</li><li>Phone: ${doctorPhoneNumber}</li><li>${doctorWebsite}</li><li>Accepting new patients: ${doctorAcceptsNewPatients}</li></ul></li>`);
       }
     }
   }
@@ -32,9 +38,7 @@ $(function(){
       $('#results-list').empty();
       $('#results-error').text("Please enter a search term.");
     }
-
   })
-
 
   $('#name-search-form').submit(function(event){
     event.preventDefault();
@@ -48,7 +52,6 @@ $(function(){
       $('#results-list').empty();
       $('#results-error').text("Please enter a search term.");
     }
-
   })
 
 });
