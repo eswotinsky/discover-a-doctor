@@ -8,7 +8,7 @@ import {getDoctorsByName} from './getDoctors';
 $(function(){
 
   function displayData(results) {
-    $('#results-list').empty();
+    $('#results').empty();
     if(results.meta.count == 0){
       $('#results-error').text("No doctors found for your search query. Please try another term.")
     }
@@ -19,9 +19,31 @@ $(function(){
         let doctorAddress = `${results.data[i].practices[0].visit_address.street}, ${results.data[i].practices[0].visit_address.street2}, ${results.data[i].practices[0].visit_address.city}`;
         let doctorPhoneNumber = results.data[i].practices[0].phones[0].number;
         let doctorWebsite = results.data[i].practices[0].website;
+        if(doctorWebsite){
+          doctorWebsite = `<a href="${doctorWebsite}">${doctorWebsite}</a>`;
+        }
+        else{
+          doctorWebsite = "None found";
+        }
         let doctorAcceptsNewPatients = results.data[i].practices[0].accepts_new_patients;
+        if(doctorAcceptsNewPatients){
+          doctorAcceptsNewPatients = "Yes";
+        }
+        else{
+          doctorAcceptsNewPatients = "No";
+        }
 
-        $('#results-list').append(`<li>${doctorName}<ul><li>${doctorAddress}</li><li>Phone: ${doctorPhoneNumber}</li><li>${doctorWebsite}</li><li>Accepting new patients: ${doctorAcceptsNewPatients}</li></ul></li>`);
+        $('#results').append(`
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">${doctorName}</h4>
+              <p>Address: ${doctorAddress}</p>
+              <p>Phone: ${doctorPhoneNumber}</p>
+              <p>Website: ${doctorWebsite}</p>
+              <p>Accepting new patients: ${doctorAcceptsNewPatients}</p>
+            </div>
+          </div>
+        `);
       }
     }
   }
@@ -35,7 +57,7 @@ $(function(){
       displayData(returnedDoctors);
     }
     else{
-      $('#results-list').empty();
+      $('#results').empty();
       $('#results-error').text("Please enter a search term.");
     }
   })
@@ -49,7 +71,7 @@ $(function(){
       displayData(returnedDoctors);
     }
     else{
-      $('#results-list').empty();
+      $('#results').empty();
       $('#results-error').text("Please enter a search term.");
     }
   })
