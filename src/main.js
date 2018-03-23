@@ -18,10 +18,13 @@ $(function(){
 
     let searchIssue = $('#search-issue').val();
 
-    let returnedDoctors = getDoctors(searchIssue, displayData);
-
-
-    displayData(returnedDoctors);
+    if(searchIssue != ""){
+      let returnedDoctors = getDoctors(searchIssue, displayData);
+      displayData(returnedDoctors);
+    }
+    else{
+      $('#results-error').text("Please enter a search term.");
+    }
 
 
   })
