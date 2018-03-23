@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Discover-A-Doctor</title>
-  </head>
-  <body>
-    <div class="container">
+<head>
+  <title>Discover-A-Doctor</title>
+</head>
+<body>
+  <div class="container">
 
-      <h1>Discover-A-Doctor</h1>
-
-      <form id="search-form" action="index.html" method="post">
-        <div class="form-group">
-          <label for="search-issue">Enter your medical issue:</label>
-          <input id="search-issue" type="text" name="search-issue">
+    <h1><span id="app-title">Discover-A-Doctor </span><small>State the nature of the medical emergency.</small></h1>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <p>Find Seattle-area doctors by specialty.</p>
+          <form id="specialty-search-form" action="index.html" method="post">
+            <div class="form-group">
+              <label for="search-issue">Enter your medical issue:</label>
+              <input id="search-issue" type="text" name="search-issue">
+            </div>
+            <button type="submit" name="button">Submit</button>
+          </form>
         </div>
-        <button type="submit" name="button">Submit</button>
-      </form>
-
-      <div id="results">
-        <ul id=results-list>
-
-        </ul>
-        <p id="results-error"></p>
+        <hr>
+        <div class="row">
+          <p>Find Seattle-area doctors by name.</p>
+          <form id="name-search-form" action="index.html" method="post">
+            <div class="form-group">
+              <label for="search-name">Enter the doctor's name (full or partial):</label>
+              <input id="search-name" type="text" name="search-name">
+            </div>
+            <button type="submit" name="button">Submit</button>
+          </form>
+        </div>
       </div>
 
-    </div>
-  </body>
+      <div class="col-md-6">
+        <div id="results">
+          <ul id=results-list>
+          </ul>
+          <p id="results-error"></p>
+        </div>
+      </div>
+    </div> <!-- outermost row -->
+
+  </div> <!-- container -->
+</body>
 </html>

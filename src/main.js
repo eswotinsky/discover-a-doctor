@@ -2,7 +2,8 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
-import {getDoctors} from './getDoctors';
+import {getDoctorsBySpecialty} from './getDoctors';
+import {getDoctorsByName} from './getDoctors';
 
 $(function(){
 
@@ -19,19 +20,35 @@ $(function(){
     }
   }
 
-  $('#search-form').submit(function(event){
+  $('#specialty-search-form').submit(function(event){
     event.preventDefault();
 
     let searchIssue = $('#search-issue').val();
-
     if(searchIssue != ""){
-      let returnedDoctors = getDoctors(searchIssue, displayData);
+      let returnedDoctors = getDoctorsBySpecialty(searchIssue, displayData);
       displayData(returnedDoctors);
     }
     else{
+      $('#results-list').empty();
       $('#results-error').text("Please enter a search term.");
     }
 
+  })
+
+
+  $('#name-search-form').submit(function(event){
+    event.preventDefault();
+
+    let searchName = $('#search-name').val();
+    if(searchName != ""){
+      let returnedDoctors = getDoctorsByName(searchName, displayData);
+      displayData(returnedDoctors);
+    }
+    else{
+      $('#results-list').empty();
+      $('#results-error').text("Please enter a search term.");
+    }
 
   })
+
 });
