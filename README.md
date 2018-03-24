@@ -18,7 +18,7 @@ A simple interface to identify and locate Seattle-area doctors based on name and
 
 ### Technologies Used
 
-* [BetterDoctor API](https://developer.betterdoctor.com/) - meteorological-data API
+* [BetterDoctor API](https://developer.betterdoctor.com/)
 * [Webpack](https://github.com/webpack/webpack) - JavaScript bundler
 * [jQuery](https://github.com/jquery/jquery) - JavaScript library
 * [Bootstrap](https://github.com/twbs/bootstrap) - Responsive design framework for HTML/CSS/JavaScript
